@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>让绘本动起来</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <span class="logo">🍂</span>
+    <div>
+      <h1>让绘本动起来</h1>
+      <p id="head-sub">把一本做好的绘本，变成一集能看的动画片</p>
+    </div>
+  </div>
+  <div class="head-right">
+    <span id="folder" class="folder" title="工程目录"></span>
+    <button class="ghost" id="btn-reveal">打开文件夹</button>
+    <button class="ghost" id="btn-check">环境自检</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ 左：分镜 ============ -->
+  <section class="col col-left">
+    <div class="col-head">
+      <h2>分镜</h2>
+      <div class="col-head-actions">
+        <button class="ghost small" id="btn-fill">补空白的运动描述</button>
+        <button class="primary small" id="btn-save">保存</button>
+      </div>
+    </div>
+    <div class="book">
+      <label class="field">
+        <span>书名</span>
+        <input type="text" id="f-title" placeholder="小狐狸的秋日远行">
+      </label>
+      <label class="field">
+        <span>副题（出现在封面第二行）</span>
+        <input type="text" id="f-subtitle" placeholder="一本关于出发、和回家的小书">
+      </label>
+    </div>
+    <div id="pages" class="pages"></div>
+    <p class="tip">
+      「怎么动」决定画面里发生什么。写得越具体越好，比如
+      <em>「一片叶子慢慢落在它鼻尖上，它眨了一下眼睛」</em>。
+      留空的话会套一句通用的，画面会动，但不贴故事。
+    </p>
+  </section>
+
+  <!-- ============ 右：流程 ============ -->
+  <section class="col col-right">
+
+    <div class="steps">
+      <div class="step" data-step="1">
+        <div class="step-head"><b>1</b><div><h3>出片段</h3>
+          <p>每页一段 10 秒。这一步用显卡，最慢。</p></div></div>
+        <div class="step-body">
+          <label class="chk"><input type="checkbox" id="c-resume" checked>跳过已有片段</label>
+          <label class="chk"><input type="text" id="c-limit" placeholder="只跑前几页（留空跑全部）"></label>
+          <button class="primary" id="btn-clips">开始出片段</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="2">
+        <div class="step-head"><b>2</b><div><h3>配旁白</h3>
+          <p id="voice-hint">自己录、或用别处的朗读工具生成，丢进来就行。</p></div></div>
+        <div class="step-body">
+          <button class="ghost" id="btn-kokoro" hidden>用本机 Kokoro 一键生成</button>
+          <span class="muted" id="voice-stat"></span>
+        </div>
+      </div>
+
+      <div class="step" data-step="3">
+        <div class="step-head"><b>3</b><div><h3>合成成片</h3>
+          <p>整形分段 → 拼整片 → 混旁白配乐 → 烧字幕 → 淡入淡出。</p></div></div>
+        <div class="step-body">
+          <label class="field inline"><span>配乐（可选）</span>
+            <input type="text" id="c-music" placeholder="留空则找工程根目录的 配乐.mp3"></label>
+          <label class="chk"><input type="checkbox" id="c-subs" checked>烧字幕</label>
+          <button class="primary" id="btn-assemble">开始合成</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="4">
+        <div class="step-head"><b>4</b><div><h3>出厂校验</h3>
+          <p>查容器、画面、音轨起点、旁白与字幕是否对得上。</p></div></div>
+        <div class="step-body">
+          <button class="ghost" id="btn-verify">跑一遍校验</button>
+          <button class="ghost" id="btn-plan">看时间轴</button>
+          <button class="ghost" id="btn-cancel" hidden>停下来</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>日志</h2><span id="busy" class="muted"></span></div>
+      <pre id="log" class="log"></pre>
+    </div>
+
+    <div class="panel" id="panel-film" hidden>
+      <div class="panel-head"><h2>成片</h2><a id="dl" class="ghost small" download>下载</a></div>
+      <video id="player" controls preload="metadata"></video>
+      <div id="frames" class="frames"></div>
+    </div>
+
+    <div class="panel" id="panel-tl" hidden>
+      <div class="panel-head"><h2>时间轴</h2><span id="tl-total" class="muted"></span></div>
+      <div class="tablewrap"><table id="tl"></table></div>
+    </div>
+
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

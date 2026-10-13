@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# 默认工程目录与它的产物：都是本机生成的东西，不进仓库
+我的动画/
+我的绘本/
+voice/
+clips/
+build/
+out/
+_fit_*.png
+_upload*
+_kokoro_*
+
+# 但示例工程里的分镜必须留下
+!examples/**/motion.json
+!examples/**/preview/
+
+# 编辑器
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

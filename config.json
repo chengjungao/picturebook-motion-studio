@@ -1,0 +1,45 @@
+{
+  "comfy_url": "http://127.0.0.1:8188",
+  "models": {
+    "unet": "wan2.2_ti2v_5B_fp16.safetensors",
+    "clip": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+    "vae": "wan2.2_vae.safetensors"
+  },
+  "video": {
+    "width": 1280,
+    "height": 704,
+    "fps": 24,
+    "frames": 241,
+    "steps": 10,
+    "cfg": 5.0,
+    "shift": 8.0,
+    "base_seed": 20261013
+  },
+  "film": {
+    "lead": 0.5,
+    "tail": 0.5,
+    "cover_sec": 6.0,
+    "min_shot": 6.0,
+    "fade_in": 0.8,
+    "fade_out": 1.5,
+    "music_gain_db": -13.0,
+    "font_dir": "C:/Windows/Fonts",
+    "font_name": "KaiTi",
+    "title_size": 88,
+    "subtitle_size": 38,
+    "body_size": 46,
+    "wrap": 17
+  },
+  "tts": {
+    "engine": "none",
+    "kokoro_python": "",
+    "kokoro_model_dir": "",
+    "voice": "zf_001",
+    "speed": 0.9
+  },
+  "ffmpeg": {
+    "ffmpeg": "",
+    "ffprobe": ""
+  },
+  "browser_path": ""
+}

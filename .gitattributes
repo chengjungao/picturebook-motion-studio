@@ -1,0 +1,22 @@
+# 默认：文本一律 LF（Windows 上 core.autocrlf=true 会把没声明的文本改成 CRLF，
+# 那样仓库里就会混着两种行尾）
+* text=auto eol=lf
+
+# .bat / .cmd 必须 CRLF：cmd 对 LF-only 的批处理在 goto / label 上偶有怪异行为
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# shell 脚本必须 LF，否则在 macOS / Linux 上跑不起来
+*.sh text eol=lf
+
+# 图片与媒体按二进制处理，别让 git 动行尾
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.mp4 binary
+*.wav binary
+*.mp3 binary
+*.7z binary
+*.safetensors binary
